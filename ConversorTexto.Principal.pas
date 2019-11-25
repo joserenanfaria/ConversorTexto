@@ -18,6 +18,7 @@ type
     lblTextoConvertido: TLabel;
     memTextoConvertido: TMemo;
     btnConverter: TButton;
+    procedure btnConverterClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -30,5 +31,38 @@ var
 implementation
 
 {$R *.dfm}
+
+uses
+  ConversorTexto.Conversor.Intf,
+  ConversorTexto.Factory;
+
+procedure TfrmPrincipal.btnConverterClick(Sender: TObject);
+var
+  _Conversor : IConversor;
+  _ConversorFactory : IConversorFactory;
+
+begin
+  _ConversorFactory := TConversorFactory.Create;
+
+  case rgOpcoes.ItemIndex of
+  0: _Conversor := _ConversorFactory.getConversorInvertido;
+  1: _Conversor := _ConversorFactory.getConversorPrimeiraMaiuscula;
+  2: _Conversor := _ConversorFactory.getConversorOrdenado;
+    else
+    Exit;
+  end;
+
+  _Conversor.Texto := memTextoOriginal.Lines.Text;
+
+  try
+    memTextoConvertido.Lines.Text := _conversor.Converter;
+  except
+    On e:exception do
+      ShowMessage(
+        'Ocorreu um erro ao realizar conversão' +
+        #13 +
+        'Entre em contato com o desenvolvedor.');
+  end;
+end;
 
 end.

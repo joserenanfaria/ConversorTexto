@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{E66243ED-A56D-49AD-897F-68ED41A2FB8D}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="ConversorTexto.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ConversorTextoTestes.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ConversorTexto">
+        <MSBuild Projects="ConversorTexto.dproj"/>
+    </Target>
+    <Target Name="ConversorTexto:Clean">
+        <MSBuild Projects="ConversorTexto.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ConversorTexto:Make">
+        <MSBuild Projects="ConversorTexto.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ConversorTextoTestes">
+        <MSBuild Projects="ConversorTextoTestes.dproj"/>
+    </Target>
+    <Target Name="ConversorTextoTestes:Clean">
+        <MSBuild Projects="ConversorTextoTestes.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ConversorTextoTestes:Make">
+        <MSBuild Projects="ConversorTextoTestes.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ConversorTexto;ConversorTextoTestes"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ConversorTexto:Clean;ConversorTextoTestes:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ConversorTexto:Make;ConversorTextoTestes:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

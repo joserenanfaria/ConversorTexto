@@ -22,10 +22,6 @@ object frmPrincipal: TfrmPrincipal
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitLeft = 96
-    ExplicitTop = 56
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object pnlLeft: TPanel
       Left = 0
       Top = 0
@@ -54,10 +50,6 @@ object frmPrincipal: TfrmPrincipal
         Height = 207
         Align = alClient
         TabOrder = 0
-        ExplicitLeft = 88
-        ExplicitTop = 104
-        ExplicitWidth = 185
-        ExplicitHeight = 89
       end
     end
     object pnlOpcoes: TPanel
@@ -74,28 +66,27 @@ object frmPrincipal: TfrmPrincipal
       TabOrder = 1
       object rgOpcoes: TRadioGroup
         Left = 10
-        Top = 10
+        Top = 23
         Width = 196
-        Height = 195
-        Align = alClient
+        Height = 171
+        Align = alBottom
         Caption = 'Op'#231#245'es de convers'#227'o'
+        Items.Strings = (
+          'Invertido'
+          'Primeira Mai'#250'scula '
+          'Ordenado')
         TabOrder = 0
-        ExplicitLeft = -31
-        ExplicitTop = 0
-        ExplicitWidth = 216
-        ExplicitHeight = 240
       end
       object btnConverter: TButton
         Left = 10
-        Top = 205
+        Top = 194
         Width = 196
-        Height = 25
+        Height = 36
         Align = alBottom
         Caption = 'Converter'
         TabOrder = 1
-        ExplicitLeft = 64
-        ExplicitTop = 128
-        ExplicitWidth = 75
+        OnClick = btnConverterClick
+        ExplicitLeft = 9
       end
     end
     object pnlRight: TPanel
@@ -110,7 +101,6 @@ object frmPrincipal: TfrmPrincipal
       Padding.Right = 10
       Padding.Bottom = 10
       TabOrder = 2
-      ExplicitLeft = 492
       object lblTextoConvertido: TLabel
         Left = 10
         Top = 10
